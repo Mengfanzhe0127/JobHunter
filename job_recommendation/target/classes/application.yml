@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/job_recommendation?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: mfz
+    password: zcj741227
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+#mybatis:
+  #configuration:
+    #map-underscore-to-camel-case: true
+    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  #配置类型别名对应的包
+  type-aliases-package: com.mfz.mybatisplus.pojo
+  #扫描通用枚举包(不再需要）
+  #type-enums-package: com.mfz.mybatisplus.enums
+
+#阿里云托管配置
+aliyun:
+  oss:
+    endpoint: https://oss-cn-chengdu.aliyuncs.com
+    accessKeyId: LTAI5tN4ecum1swUUzYmgfc4
+    accessKeySecret: vIFi8yFMJPpJnxwV7KtNIN756X555P
+    bucketName: web-job-recommendation
+
+
+#事务管理开关
+logging:
+  level:
+    org.springframework.jdbc.support.JdbcTransactionManager: debug
+
+mfz:
+  method: 1 # 1为雪花漂移算法，2为传统算法
+  worker-id: 2 # 机器码id
+

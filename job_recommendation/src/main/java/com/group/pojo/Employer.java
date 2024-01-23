@@ -1,0 +1,66 @@
+package com.group.pojo;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
+import java.io.Serializable;
+
+/**
+ * 招聘者表
+ * @TableName employer
+ */
+@TableName(value ="employer")
+@Data
+public class Employer implements Serializable {
+    /**
+     * 招聘者编号
+     */
+    @TableId(type = IdType.AUTO)
+    private Integer id;
+
+    /**
+     * 招聘者职务
+     */
+    private String duty;
+
+    /**
+     * 职位编号
+     */
+    private Integer pid;
+
+    /**
+     * 公司名称
+     */
+    private String company;
+
+    /**
+     * 招聘者姓名
+     */
+    private byte[] name;
+
+    /**
+     * 招聘者电话
+     */
+    private byte[] phone;
+
+    /**
+     * 招聘者邮箱
+     */
+    private byte[] email;
+
+    /**
+     * 招聘者密码
+     */
+    private byte[] password;
+
+    /**
+     * 招聘者类型
+     * 用于前端交互，默认为1
+     */
+    private Integer charaterType = 1;
+
+//    @TableField(exist = false)
+//    private static final long serialVersionUID = 1L;
+}
