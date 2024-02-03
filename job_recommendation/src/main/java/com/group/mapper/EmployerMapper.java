@@ -20,9 +20,11 @@ public interface EmployerMapper extends BaseMapper<Employer> {
      * @param company
      * @param password
      */
-    @Insert("insert into employer(name,email,company,password) values (AES_ENCRYPT(#{name},'name_secret_key')," +
-            "AES_ENCRYPT(#{email},'email_secret_key'),#{company}," +
-            "AES_ENCRYPT(#{password},'password_secret_key'))")
+    @Insert("insert into employer(name,email,company,password) values " +
+            "(AES_ENCRYPT(#{name},'name_secret_key','AES/CBC/PKCS5Padding')," +
+            "AES_ENCRYPT(#{email},'email_secret_key','AES/CBC/PKCS5Padding')," +
+            "#{company}," +
+            "AES_ENCRYPT(#{password},'password_secret_key','AES/CBC/PKCS5Padding'))")
     void insertByNameEmailCompanyPassword(byte[] name, byte[] email, String company, byte[] password);
 
     /**
@@ -31,9 +33,29 @@ public interface EmployerMapper extends BaseMapper<Employer> {
      * @param password
      * @return
      */
-    @Select("select * from employer where AES_DECRYPT(email,'email_secret_key') = #{phoneOrEmail} " +
-            "and AES_DECRYPT(password,'password_secret_key') = #{password}")
+    @Select("select * from employer where AES_DECRYPT(email,'email_secret_key','AES/CBC/PKCS5Padding') = #{phoneOrEmail} " +
+            "and AES_DECRYPT(password,'password_secret_key','AES/CBC/PKCS5Padding') = #{password}")
     Employer getByEmailAndPassword(byte[] phoneOrEmail,byte[] password);
+
+    /**
+     * 招聘者查看个人信息
+     * @param id
+     * @return
+     */
+    @Select("SELECT id, AES_DECRYPT(name, 'name_secret_key', 'AES/CBC/PKCS5Padding') AS name,\n" +
+            "       duty, AES_DECRYPT(phone, 'phone_secret_key', 'AES/CBC/PKCS5Padding') AS phone,\n" +
+            "       AES_DECRYPT(email, 'email_secret_key', 'AES/CBC/PKCS5Padding') AS email,\n" +
+            "       AES_DECRYPT(password, 'password_secret_key', 'AES/CBC/PKCS5Padding') AS password,\n" +
+            "       company\n" +
+            "FROM employer WHERE id = #{id};")
+    Employer encryptSelectById(Long id);
+
+    /**
+     * 求职者修改个人信息
+     * 动态SQL
+     * @param employer
+     */
+    void encryptUpdate(Employer employer);
 }
 
 

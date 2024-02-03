@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.group.pojo.User">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+            <result property="birthYear" column="birth_year" jdbcType="SMALLINT"/>
+            <result property="minExpectedSalary" column="min_expected_salary" jdbcType="VARCHAR"/>
+            <result property="maxExpectedSalary" column="max_expected_salary" jdbcType="VARCHAR"/>
+            <result property="idealCity" column="ideal_city" jdbcType="VARCHAR"/>
+            <result property="education" column="education" jdbcType="OTHER"/>
+            <result property="type" column="type" jdbcType="OTHER"/>
+            <result property="school" column="school" jdbcType="VARCHAR"/>
+            <result property="major" column="major" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,nickname,birth_year,
+        min_expected_salary,max_expected_salary,ideal_city,
+        education,type,school,
+        major,name,phone,
+        email,address,password,character_type
+    </sql>
+    
+    <!--求职者修改个人信息-->
+    <update id="encryptUpdate">
+        update user
+        <set>
+            <if test="name != null">
+                name = AES_ENCRYPT(#{name}, 'name_secret_key', 'AES/CBC/PKCS5Padding'),
+            </if>
+            <if test="nickname != null">
+                nickname = #{nickname},
+            </if>
+            <if test="phone != null">
+                phone = AES_ENCRYPT(#{phone}, 'phone_secret_key', 'AES/CBC/PKCS5Padding') ,
+            </if>
+            <if test="email != null">
+                email = AES_ENCRYPT(#{email}, 'email_secret_key', 'AES/CBC/PKCS5Padding'),
+            </if>
+            <if test="address != null">
+                address = AES_ENCRYPT(#{address}, 'address_secret_key', 'AES/CBC/PKCS5Padding'),
+            </if>
+            <if test="password != null">
+                password = AES_ENCRYPT(#{password},'password_secret_key','AES/CBC/PKCS5Padding'),
+            </if>
+            <if test="birthYear != null">
+                birth_year = #{birthYear},
+            </if>
+            <if test="minExpectedSalary != null">
+                min_expected_salary = #{minExpectedSalary},
+            </if>
+            <if test="maxExpectedSalary != null">
+                max_expected_salary = #{maxExpectedSalary},
+            </if>
+            <if test="idealCity != null">
+                ideal_city = #{idealCity},
+            </if>
+            <if test="education != null">
+                education = #{education},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="school != null">
+                school = #{school},
+            </if>
+            <if test="major != null">
+                major = #{major},
+            </if>
+            <if test="resume != null and resume != ''">
+                resume = #{resume}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>

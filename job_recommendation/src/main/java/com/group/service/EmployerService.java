@@ -31,4 +31,17 @@ public interface EmployerService extends IService<Employer> {
      * @return
      */
     Employer employerLogin(byte[] phoneOrEmail, byte[] password);
+
+    /**
+     * 招聘者查看个人信息
+     * @param id
+     * @return
+     */
+    Employer encryptGetById(Long id);
+
+    /**
+     * 招聘者修改个人信息
+     * @param employer
+     */
+    void encryptUpdate(Employer employer);
 }

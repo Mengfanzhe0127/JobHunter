@@ -38,22 +38,22 @@ public class Employer implements Serializable {
     /**
      * 招聘者姓名
      */
-    private byte[] name;
+    private String name; //取消加密
 
     /**
      * 招聘者电话
      */
-    private byte[] phone;
+    private String phone; //取消加密
 
     /**
      * 招聘者邮箱
      */
-    private byte[] email;
+    private String email; //取消加密
 
     /**
      * 招聘者密码
      */
-    private byte[] password;
+    private String password; //取消加密
 
     /**
      * 招聘者类型

@@ -47,6 +47,16 @@ public class EmployerServiceImpl extends ServiceImpl<EmployerMapper, Employer>
             return null;
         }
     }
+
+    @Override
+    public Employer encryptGetById(Long id) {
+        return employerMapper.encryptSelectById(id);
+    }
+
+    @Override
+    public void encryptUpdate(Employer employer) {
+        employerMapper.encryptUpdate(employer);
+    }
 }
 
 

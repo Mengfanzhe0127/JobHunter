@@ -31,4 +31,18 @@ public interface UserService extends IService<User> {
      * @return
      */
     User userLogin(byte[] phoneOrEmail, byte[] password);
+
+    /**
+     * 求职者查询个人信息
+     * @param id
+     * @return
+     */
+    User encryptGetById(Long id);
+
+    /**
+     * 求职者修改个人信息
+     * @param u
+     * @return
+     */
+     void encryptUpdate(User u);
 }

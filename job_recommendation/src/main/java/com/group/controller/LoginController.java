@@ -34,13 +34,17 @@ public class LoginController {
             log.info("求职者登录:{}",u);
             Map<String,Object> claims = new HashMap<>();
             claims.put("id",u.getId());
-            claims.put("name",u.getName());
+//            claims.put("nickname",u.getNickname());
 
             String jwt = JwtUtils.generateJwt(claims);
             Map<String,Object> userLoginMap = new HashMap<>();
             userLoginMap.put("token",jwt);
             //由于前端判断
             userLoginMap.put("type",0);
+
+            //返回给前端id,用于用户个人信息查询和编辑
+            userLoginMap.put("id",u.getId());
+
             return Result.success(userLoginMap);
         }
 
@@ -50,13 +54,17 @@ public class LoginController {
             log.info("招聘者登录:{}",e);
             Map<String,Object> claims = new HashMap<>();
             claims.put("id",e.getId());
-            claims.put("name",e.getName());
+//            claims.put("nickname",e.getNickname());
 
             String jwt = JwtUtils.generateJwt(claims);
             Map<String,Object> employerLoginMap = new HashMap<>();
             employerLoginMap.put("token",jwt);
             //用于前端判断
             employerLoginMap.put("type",1);
+
+            //返回给前端id,用于用户个人信息查询和编辑
+            employerLoginMap.put("id",e.getId());
+
             return Result.success(employerLoginMap);
         }
 

@@ -1,5 +1,7 @@
 package com.group.service.impl;
 
+import cn.hutool.crypto.Mode;
+import cn.hutool.crypto.Padding;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.group.Component.IDGeneratorSnowFlake;
 import com.group.mapper.UserMapper;
@@ -7,6 +9,8 @@ import com.group.pojo.User;
 import com.group.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import cn.hutool.crypto.SecureUtil;
+import cn.hutool.crypto.symmetric.AES;
 
 /**
 * @author mfz
@@ -19,6 +23,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     @Autowired
     private UserMapper userMapper;
+
+
     @Override
     public void userRegister(byte[] name, byte[] email, byte[] phone, byte[] password) {
         //利用雪花算法为用户生成唯一Id
@@ -49,6 +55,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         } else {
             return null; // 用户不存在或密码错误，返回null
         }
+    }
+
+    @Override
+    public User encryptGetById(Long id) {
+        return userMapper.encryptSelectById(id);
+    }
+
+    @Override
+    public void encryptUpdate(User u) {
+        userMapper.encryptUpdate(u);
     }
 
 }

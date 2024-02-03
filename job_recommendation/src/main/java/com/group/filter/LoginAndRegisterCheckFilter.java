@@ -15,10 +15,10 @@ import java.io.IOException;
 @Slf4j
 @WebFilter(urlPatterns = "/*")
 public class LoginAndRegisterCheckFilter implements Filter {
-//    @Override
-//    public void init(FilterConfig filterConfig) throws ServletException {
-//        System.out.println("初始化方法执行");
-//    }
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        System.out.println("初始化方法执行");
+    }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -28,7 +28,7 @@ public class LoginAndRegisterCheckFilter implements Filter {
         String url = req.getRequestURL().toString();
         log.info("请求的url：{}",url);
 
-        //登陆操作不需要先判断是否含有令牌
+        //登陆，注册操作不需要先判断是否含有令牌
         if(url.contains("login")||url.contains("register")) {
             log.info("注册或登陆成功，放行");
             filterChain.doFilter(servletRequest,servletResponse);
@@ -67,8 +67,8 @@ public class LoginAndRegisterCheckFilter implements Filter {
         filterChain.doFilter(servletRequest,servletResponse);
     }
 
-//    @Override
-//    public void destroy() {
-//        System.out.println("销毁方法执行");
-//    }
+    @Override
+    public void destroy() {
+        System.out.println("销毁方法执行");
+    }
 }

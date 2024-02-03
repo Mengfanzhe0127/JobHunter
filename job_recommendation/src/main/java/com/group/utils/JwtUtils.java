@@ -18,6 +18,7 @@ public class JwtUtils {
      * @return
      */
     public static String generateJwt(Map<String, Object> claims){
+//        System.out.println("生成jwt令牌");
         String jwt = Jwts.builder()
                 .addClaims(claims)
                 .signWith(SignatureAlgorithm.HS256, signKey)
@@ -32,6 +33,7 @@ public class JwtUtils {
      * @return JWT第二部分负载 payload 中存储的内容
      */
     public static Claims parseJWT(String jwt){
+//        System.out.println("解析jwt令牌");
         Claims claims = Jwts.parser()
                 .setSigningKey(signKey)
                 .parseClaimsJws(jwt)

@@ -1,5 +1,6 @@
 spring:
   profiles:
+    # 配置服务器改为dev2，配置本地改为local
     active: dev2
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -30,8 +31,8 @@ mybatis-plus:
 aliyun:
   oss:
     endpoint: https://oss-cn-chengdu.aliyuncs.com
-    accessKeyId:
-    accessKeySecret:
+    accessKeyId: LTAI5tN4ecum1swUUzYmgfc4
+    accessKeySecret: vIFi8yFMJPpJnxwV7KtNIN756X555P
     bucketName: web-job-recommendation
 
 

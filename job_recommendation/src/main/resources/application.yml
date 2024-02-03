@@ -1,5 +1,6 @@
 spring:
   profiles:
+    # 配置服务器改为dev2，配置本地改为local
     active: dev2
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver

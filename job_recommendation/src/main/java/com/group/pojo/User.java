@@ -68,33 +68,39 @@ public class User implements Serializable {
     /**
      * 用户姓名
      */
-    private byte[] name;
+    private String name;
 
     /**
      * 用户电话
      */
-    private byte[] phone;
+    private String phone;
 
     /**
      * 用户邮箱
      */
-    private byte[] email;
+    private String email;
 
     /**
      * 用户通讯地址
      */
-    private byte[] address;
+    private String address;
 
     /**
      * 用户密码
      */
-    private byte[] password;
+    private String password;
 
     /**
      * 求职者类型
      * 用于前端判断，求职者默认为0
      */
     private Integer characterType = 0;
+
+    /**
+     * 用户简历
+     */
+    private String resume;
+
 
 //    @TableField(exist = false)
 //    private static final long serialVersionUID = 1L;
