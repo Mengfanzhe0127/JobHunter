@@ -1,3 +1,3 @@
 ## Repository for JOB HUNTER
 
-![Job Hunter image](image/logo.png)
+![Job Hunter image](asset/logo.png)
