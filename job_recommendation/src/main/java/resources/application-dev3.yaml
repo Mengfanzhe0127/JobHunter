@@ -1,0 +1,5 @@
+mfz:
+  db:
+    host: 172.27.23.51
+    name: root
+    pw: 8508359

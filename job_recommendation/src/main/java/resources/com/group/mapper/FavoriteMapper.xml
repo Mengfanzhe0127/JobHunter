@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group.mapper.FavoriteMapper">
+    <!--求职者取消收藏职位-->
+    <delete id="deleteFavorite">
+        delete
+        from favorite
+        where uid = #{userId}
+        AND
+        pid in
+        <foreach collection="positionIds" item="pid" separator="," open="(" close=")">
+            #{pid}
+        </foreach>
+    </delete>
+
+</mapper>

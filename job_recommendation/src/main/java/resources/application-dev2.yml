@@ -1,0 +1,5 @@
+mfz:
+  db:
+    host: mysql
+    name: root
+    pw: 8508359

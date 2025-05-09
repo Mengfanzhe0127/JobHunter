@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group.mapper.UserNoResumeMapper">
+
+    <!--求职者修改无简历信息-->
+    <update id="updateById">
+        update user_no_resume
+        <set>
+            <if test="userNoResume.birth != null">
+                birth = #{userNoResume.birth},
+            </if>
+            <if test="userNoResume.workExperience != null">
+                work_experience = #{userNoResume.workExperience},
+            </if>
+            <if test="userNoResume.awards != null">
+                awards = #{userNoResume.awards},
+            </if>
+            <if test="userNoResume.skills != null">
+                skills = #{userNoResume.skills},
+            </if>
+            <if test="userNoResume.selfJudge != null">
+                self_judge = #{userNoResume.selfJudge},
+            </if>
+            <if test="userNoResume.selfInfo != null">
+                self_info = #{userNoResume.selfInfo},
+            </if>
+        </set>
+        where id = #{userId}
+    </update>
+</mapper>

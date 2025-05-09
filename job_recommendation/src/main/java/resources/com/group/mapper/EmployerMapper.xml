@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.group.mapper.EmployerMapper">
+
+    <resultMap id="BaseResultMap" type="com.group.pojo.Employer">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="duty" column="duty" jdbcType="VARCHAR"/>
+            <result property="company" column="company" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,duty,pid,
+        company,name,phone,
+        email,password,character_type
+    </sql>
+
+    <!--招聘者修改个人信息-->
+    <update id="encryptUpdate">
+        update employer
+        <set>
+            <if test="name != null">
+                name = AES_ENCRYPT(#{name}, 'name_secret_key', 'AES/CBC/PKCS5Padding'),
+            </if>
+            <if test="duty != null">
+                duty = #{duty},
+            </if>
+            <if test="phone != null">
+                phone = AES_ENCRYPT(#{phone}, 'phone_secret_key', 'AES/CBC/PKCS5Padding') ,
+            </if>
+            <if test="email != null">
+                email = AES_ENCRYPT(#{email}, 'email_secret_key', 'AES/CBC/PKCS5Padding'),
+            </if>
+            <if test="password != null">
+                password = AES_ENCRYPT(#{password},'password_secret_key','AES/CBC/PKCS5Padding'),
+            </if>
+            <if test="company != null">
+                company = #{company},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+</mapper>
