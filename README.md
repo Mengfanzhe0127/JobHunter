@@ -26,4 +26,4 @@ Here, we present the architecture of the virtual interview model:
 
 ## Let't examine the impressive effects!:
 
-<font size="6">🔥[Click here to watch the final demonstration video of Job Hunter!](https://vimeo.com/1082929609)</font>
+<font size="10">🔥[Click here to watch the final demonstration video of Job Hunter!](https://vimeo.com/1082929609)</font>
