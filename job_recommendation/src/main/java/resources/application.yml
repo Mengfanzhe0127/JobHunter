@@ -63,8 +63,6 @@ mybatis-plus:
 aliyun:
   oss:
     endpoint: https://oss-cn-chengdu.aliyuncs.com
-    accessKeyId: LTAI5tN4ecum1swUUzYmgfc4
-    accessKeySecret: vIFi8yFMJPpJnxwV7KtNIN756X555P
     bucketName: web-job-recommendation
 
 
