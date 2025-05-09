@@ -28,6 +28,8 @@ Here, we present the architecture of the virtual interview model:
 
 <font size="10">🔥[Click here to watch the final demonstration video of Job Hunter!](https://vimeo.com/1082929609)</font>
 
+# Rec Algorithm Details:
+
 ## Graph-Based Rec:
 Here, we present a partial diagram of the knowledge graph design, namely the most important position nodes among them, as well as their attributes and the related nodes:
 ![graph](asset/graph.png)
