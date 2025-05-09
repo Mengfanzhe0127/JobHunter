@@ -22,8 +22,15 @@ In the actual deployment of the production environment, based on Kubernetes tech
 
 ## Architecture for Alogorithm
 Here, we present the architecture of the virtual interview model:
-![deployment](asset/algorithm.png)
+![algorithm](asset/algorithm.png)
 
 ## Let't examine the impressive effects!:
 
 <font size="10">🔥[Click here to watch the final demonstration video of Job Hunter!](https://vimeo.com/1082929609)</font>
+
+## Graph-Based Rec:
+Here, we present a partial diagram of the knowledge graph design, namely the most important position nodes among them, as well as their attributes and the related nodes:
+![graph](asset/graph.png)
+
+We set up seven types of entities and extracted them in the job description. For each entity, we designed different processing methods. Finally, we uniformly calculate the matching degree and make recommendations:
+![entity](asset/entity.png)
